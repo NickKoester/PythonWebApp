@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, flash
 import os
-from sheetOperations import sheetAppend, clearsheet
+from sheetOperations import sheetAppend, clearsheet, geteyedata
 from sqlalchemy.orm import sessionmaker
 from tabledef import create_engine, User
 engine = create_engine('sqlite:///tutorial.db', echo=True)
@@ -56,6 +56,13 @@ def admin(action):
     if action == 'cleared':
         clearsheet()
     return render_template('admin.html', action=action)
+
+
+@app.route("/chart")
+def chart():
+    labels = ["Brown", "Blue", "Green", "Other"]
+    values = geteyedata()
+    return render_template('chart.html', values=values, labels=labels)
 
 
 if __name__ == '__main__':

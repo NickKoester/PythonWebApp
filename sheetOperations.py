@@ -82,7 +82,7 @@ def clearsheet():
                           discoveryServiceUrl=discoveryUrl)
 
     spreadsheet_id = '1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY'
-    range_name = 'Sheet1!A2:Z1017'
+    range_name = 'Sheet1!A2:Z1008'
     clear_values_request_body = {
     }
 
@@ -92,6 +92,37 @@ def clearsheet():
     pprint(response)
 
 
+def geteyedata():
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
+                    'version=v4')
+    service = discovery.build('sheets', 'v4', http=http,
+                              discoveryServiceUrl=discoveryUrl)
+
+    spreadsheetId = '1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY'
+    rangeName = 'Sheet1!D2:D1008'
+    result = service.spreadsheets().values().get(
+        spreadsheetId=spreadsheetId, range=rangeName).execute()
+    values = result.get('values', [])
+
+    numcolors = [0, 0, 0, 0]
+    if not values:
+        print('No data found.')
+    else:
+        for row in values:
+            if row[0] == 'brown':
+                numcolors[0] += 1
+            elif row[0] == 'blue':
+                numcolors[1] += 1
+            elif row[0] == 'green':
+                numcolors[2] += 1
+            elif row[0] == 'other':
+                numcolors[3] += 1
+        print(numcolors)
+
+    return numcolors
+
+
 if __name__ == '__main__':
-    sheetAppend(['cat', 'dog', '6'])
-    clearsheet()
+    geteyedata()
