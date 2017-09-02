@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Form</title>
+</head>
+<body>
+    <form action = "http://localhost:5000/confirm" method = "POST">
+        <p>First Name<input type = "text" name = "firstname" /></p>
+        <p>Last Name<input type = "text" name = "lastname" /></p>
+        <p>Number of people in party<input type = "text" name = "numpeople" /></p>
+
+        <p>Eye Color</p>
+        <input type="radio" name="eyecolor" value="brown" checked> Brown<br>
+        <input type="radio" name="eyecolor" value="blue"> Blue<br>
+        <input type="radio" name="eyecolor" value="green"> Green<br>
+        <input type="radio" name="eyecolor" value="other"> Other
+        <p><input type = "submit" value = "submit" /></p>
+    </form>
+
+</body>
+</html>
