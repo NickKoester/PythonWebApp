@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, flash
 import os
-from sheetAppend import sheetAppend
+from sheetOperations import sheetAppend, clearsheet
 from sqlalchemy.orm import sessionmaker
 from tabledef import create_engine, User
 engine = create_engine('sqlite:///tutorial.db', echo=True)
@@ -13,7 +13,7 @@ def index():
     if not session.get('logged_in'):
         return render_template('login.html')
     elif session['username'] == 'admin':
-        return render_template('admin.html')
+        return admin('')
     else:
         return render_template('form.html')
 
@@ -49,6 +49,15 @@ def confirm():
         return render_template('confirm.html', result=result)
 
 
+@app.route('/admin/<action>')
+def admin(action):
+    if not (session.get('logged_in') and session['username'] == 'admin'):
+        return render_template('login.html')
+    if action == 'cleared':
+        clearsheet()
+    return render_template('admin.html', action=action)
+
+
 if __name__ == '__main__':
     app.secret_key = os.urandom(12)
-    app.run()
+    app.run(debug=True)

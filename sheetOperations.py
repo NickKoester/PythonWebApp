@@ -64,7 +64,7 @@ def sheetAppend(rowdata):
     value_input_option = 'USER_ENTERED'
     insert_data_option = 'INSERT_ROWS'
     value_range_body = {
-        'values' : [rowdata]
+        'values': [rowdata]
     }
 
     request = service.spreadsheets().values().append(spreadsheetId=spreadsheet_id, range=range_name, valueInputOption=value_input_option, insertDataOption=insert_data_option, body=value_range_body)
@@ -73,5 +73,25 @@ def sheetAppend(rowdata):
     pprint(response)
 
 
+def clearsheet():
+    credentials = get_credentials()
+    http = credentials.authorize(httplib2.Http())
+    discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
+                    'version=v4')
+    service = discovery.build('sheets', 'v4', http=http,
+                          discoveryServiceUrl=discoveryUrl)
+
+    spreadsheet_id = '1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY'
+    range_name = 'Sheet1!A2:Z1017'
+    clear_values_request_body = {
+    }
+
+    request = service.spreadsheets().values().clear(spreadsheetId=spreadsheet_id, range=range_name, body=clear_values_request_body)
+    response = request.execute()
+
+    pprint(response)
+
+
 if __name__ == '__main__':
     sheetAppend(['cat', 'dog', '6'])
+    clearsheet()

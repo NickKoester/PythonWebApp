@@ -6,13 +6,22 @@
 </head>
 <body>
     <h1>Welcome Admin!</h1>
+    {% if action == 'cleared' %}
+        <p>Sheet has been cleared.</p>
+    {% endif %}
 
-    <form action="http://localhost:5000/">
-        <input type="submit" value="View chart" />
-    </form>
+    <a href="https://docs.google.com/spreadsheets/d/1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY" target="_blank">
+        View the spreadsheet
+    </a>
+    <br>
     <br>
 
     <form action="http://localhost:5000/">
+        <input type="submit" value="View graph" />
+    </form>
+    <br>
+
+    <form action="http://localhost:5000/admin/cleared">
         <input type="submit" value="Clear list" />
     </form>
     <br>
