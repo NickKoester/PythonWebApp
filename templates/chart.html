@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart</title>
+    <!-- import plugin script -->
+    <script src='static/Chart.min.js'></script>
+</head>
+<body>
+<h1 class="text-center">Eye color data</h1>
+<!-- bar chart canvas element -->
+<canvas id="myChart" width="600" height="250"></canvas>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Brown", "Blue", "Green", "Other"],
+            datasets: [{
+                label: 'Eye color data',
+                data: [{% for item in values %}
+                            {{item}},
+                        {% endfor %}],
+                backgroundColor: [
+                    'rgba(139, 69, 19, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(0, 128, 0, 0.2)',
+                    'rgba(47, 79, 79, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(139, 69, 19, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(0, 128, 0, 0.2)',
+                    'rgba(47, 79, 79, 0.2)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

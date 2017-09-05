@@ -5,30 +5,25 @@
     <title>Admin</title>
 </head>
 <body>
-    <h1>Welcome Admin!</h1>
-    {% if action == 'cleared' %}
-        <p>Sheet has been cleared.</p>
-    {% endif %}
 
-    <a href="https://docs.google.com/spreadsheets/d/1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY" target="_blank">
-        View the spreadsheet
-    </a>
-    <br>
-    <br>
+    <div class="container">
+        <h1 class="text-center">Welcome Admin!</h1>
+        {% if action == 'cleared' %}
+        <div class="alert alert-success" role="alert">Sheet has been cleared.</div>
+        {% endif %}
 
-    <form action="http://localhost:5000/chart">
-        <input type="submit" value="View graph" />
-    </form>
-    <br>
+        <div class="list-group">
+            <a href="http://localhost:5000/chart" target="_blank" class="list-group-item list-group-item-action text-center">
+                View eye color graph</a>
+            <a href="https://docs.google.com/spreadsheets/d/1ge8Q4jAoJ1Z3d5JC-4A6ky1S3BLYGtsbWRsYiguaSpY" target="_blank"
+               class="list-group-item list-group-item-action text-center">View registration spreadsheet</a>
+            <a href="/admin/cleared" class="list-group-item list-group-item-action text-center">Clear spreadsheet</a>
+            <a href="/logout" class="list-group-item list-group-item-action text-center">Log Out</a>
+        </div>
+    </div>
 
-    <form action="http://localhost:5000/admin/cleared">
-        <input type="submit" value="Clear list" />
-    </form>
-    <br>
-
-    <form action="http://localhost:5000/logout">
-        <input type="submit" value="Log out" />
-    </form>
-    <br>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

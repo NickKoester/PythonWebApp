@@ -5,19 +5,50 @@
     <title>Main Form</title>
 </head>
 <body>
-    <h1>User registration</h1>
+    <div class="container">
+    <h1 class="text-center">User registration</h1><br/>
     <form action = "http://localhost:5000/confirm" method = "POST">
-        <p>First Name<input type = "text" name = "firstname" /></p>
-        <p>Last Name<input type = "text" name = "lastname" /></p>
-        <p>Number of people in party<input type = "text" name = "numpeople" /></p>
 
-        <p>Eye Color</p>
-        <input type="radio" name="eyecolor" value="brown" checked> Brown<br>
-        <input type="radio" name="eyecolor" value="blue"> Blue<br>
-        <input type="radio" name="eyecolor" value="green"> Green<br>
-        <input type="radio" name="eyecolor" value="other"> Other
-        <p><input type = "submit" value = "submit" /></p>
+        <div class="form-row form-group">
+            <div class="form-group col-md-6">
+                <label for="firstname" class="col-form-label">First Name</label>
+                <input type = "text" name = "First Name" class ="form-control" id="firstname" placeholder="First Name"/>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastname" class="col-form-label">Last Name</label>
+                <input type = "text" name = "Last Name" class="form-control" id="lastname" placeholder="Last Name"/>
+            </div>
+        </div>
+
+        <div class = "form-row form-group col-md-12">
+            <label for="numpeople" class="col-form-label">Number of People</label>
+            <input type = "text" name = "# People" class="form-control" id="numpeople" placeholder="3"/>
+        </div>
+
+        <div class="form-row form-group col-md-12">
+        <h3>Eye Color</h3>
+        <div class="radio">
+            <label><input type="radio" name="Eye Color" value="Brown">Brown</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="Eye Color" value="Blue">Blue</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="Eye Color" value="Green">Green</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="Eye Color" value="Other">Other</label>
+        </div>
+        </div>
+
+        <div class="form-group form-row">
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
     </form>
+    </div>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

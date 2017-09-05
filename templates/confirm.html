@@ -5,8 +5,9 @@
     <title>Confirm</title>
 </head>
 <body>
+    <div class="container">
     <h1>Confirmation</h1>
-        <table border = 1>
+        <table class="table table-striped">
            {% for key, value in result.items() %}
 
             <tr>
@@ -18,13 +19,15 @@
         </table>
     <br>
 
-    <form action="http://localhost:5000/logout">
-        <input type="submit" value="Logout" />
-    </form>
-    <br>
+    <a href="logout"><button type="button" class="btn btn-primary btn-lg">Log Out</button></a>
 
-    <form action="http://localhost:5000/">
-        <input type="submit" value="Register another" />
-    </form>
+    <a href="/"><button type ="button" class="btn btn-secondary btn-lg">Register Another</button></a>
+
+
+    </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

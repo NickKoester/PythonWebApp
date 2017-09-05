@@ -111,13 +111,13 @@ def geteyedata():
         print('No data found.')
     else:
         for row in values:
-            if row[0] == 'brown':
+            if row[0] == 'Brown':
                 numcolors[0] += 1
-            elif row[0] == 'blue':
+            elif row[0] == 'Blue':
                 numcolors[1] += 1
-            elif row[0] == 'green':
+            elif row[0] == 'Green':
                 numcolors[2] += 1
-            elif row[0] == 'other':
+            elif row[0] == 'Other':
                 numcolors[3] += 1
         print(numcolors)
 
